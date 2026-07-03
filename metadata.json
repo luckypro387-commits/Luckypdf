@@ -1,0 +1,6 @@
+{
+  "name": "Todo List",
+  "description": "A beautiful, offline-first Todo List application built with Jetpack Compose and Room database.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
