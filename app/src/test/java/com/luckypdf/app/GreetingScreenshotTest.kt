@@ -1,18 +1,11 @@
-package com.example
+package com.luckypdf.app
 
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onRoot
-import androidx.room.Room
-import androidx.test.core.app.ApplicationProvider
-import com.example.data.TodoDatabase
-import com.example.data.TaskRepository
-import com.example.ui.TaskViewModel
-import com.example.ui.TodoScreen
-import com.example.ui.theme.MyApplicationTheme
+import com.luckypdf.app.ui.LuckyPdfApp
+import com.luckypdf.app.ui.theme.LuckyPdfTheme
 import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
 import com.github.takahirom.roborazzi.captureRoboImage
-import org.junit.After
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -27,29 +20,11 @@ class GreetingScreenshotTest {
 
   @get:Rule val composeTestRule = createComposeRule()
 
-  private lateinit var database: TodoDatabase
-
-  @Before
-  fun setUp() {
-    database = Room.inMemoryDatabaseBuilder(
-      ApplicationProvider.getApplicationContext(),
-      TodoDatabase::class.java
-    ).allowMainThreadQueries().build()
-  }
-
-  @After
-  fun tearDown() {
-    database.close()
-  }
-
   @Test
   fun greeting_screenshot() {
-    val repository = TaskRepository(database.taskDao())
-    val viewModel = TaskViewModel(repository)
-
     composeTestRule.setContent {
-      MyApplicationTheme {
-        TodoScreen(viewModel = viewModel)
+      LuckyPdfTheme {
+        LuckyPdfApp()
       }
     }
 
